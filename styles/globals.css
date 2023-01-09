@@ -19,6 +19,14 @@ a {
   box-sizing: border-box;
 }
 
+.d {
+  border: 1px solid red;
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
