@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import SimpleLineChart from "./simpleLineChart";
 import LineChart from "./lineChart";
 import { useAppContext } from "../middleware/appContext";
-import Image from "next/image";
+import TempCard from "./tempCard";
 
 const TempCharts: FC = () => {
   const { forecasts } = useAppContext();
@@ -81,11 +81,7 @@ const TempCharts: FC = () => {
       </div>
       <div className="flex p-4">
         <div className="bg-zinc-800 rounded-xl mr-8 p-4 basis-4/6">
-          <div className="">
-            <p className="text-2xl font-bold ">
-              How's the temperature <br /> this week?
-            </p>
-          </div>
+  
           <LineChart dataSet={dataSets} labels={labels} />
         </div>
         <div className="flex-grow">
@@ -97,34 +93,3 @@ const TempCharts: FC = () => {
 };
 
 export default TempCharts;
-
-const TempCard: FC<{ currentData: any }> = ({ currentData }) => {
-  const { locationDetails } = useAppContext();
-
-  return (
-    <div
-      className={` bg-gradient-to-t ${
-        currentData.will_it_rain ? "from-blue-500" : "from-amber-600"
-      }   h-full rounded-xl p-4`}
-    >
-      <p className="italic">today in</p>
-      <p className="font-bold text-2xl uppercase">
-        {locationDetails?.location}
-      </p>
-      <div className="relative h-32">
-        <Image
-          src={`https:${currentData.icon_url}`}
-          alt="clouds"
-          fill
-          style={{ objectFit: "contain" }}
-        />
-      </div>
-      <p className="text-center font-bold text-4xl mb-4">
-        {currentData.avg_temp_c} <sup>0</sup>C{" "}
-      </p>
-      <p className="italic text-sm text-center border-t pt-4">
-        {currentData.condition}
-      </p>
-    </div>
-  );
-};

@@ -23,9 +23,6 @@ type Location = {
 };
 
 export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [maxTemp, setMaxTemp] = useState<number[]>([]);
-  const [minTemp, setMinTemp] = useState<number[]>([]);
-  const [avgTemp, setAvgTemp] = useState<number[]>([]);
 
   const [forecasts, setForecasts] = useState();
   const [locationDetails, setLocationDetails] = useState<Location>();
@@ -64,9 +61,6 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     getData();
   }, []);
   const contextValue = {
-    maxTemp,
-    minTemp,
-    avgTemp,
     forecasts,
     locationDetails,
   };

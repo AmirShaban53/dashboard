@@ -1,13 +1,6 @@
 import TempCharts from "../components/tempCharts";
-import LocationDetails from "../components/locationDetails";
-import LineChart from "../components/lineChart";
-import { useAppContext } from "../middleware/appContext";
 
 export default function Home() {
-  const { maxTemp, minTemp } = useAppContext();
-  // useEffect(() => {
-  //   getData();
-  // }, []);
   return (
     <div className=" ">
       <TempCharts />

@@ -16,7 +16,7 @@ const options = {
   plugins: {
     legend: {
       display: false,
-      labels: {color: "white"}
+      labels: { color: "white" },
     },
   },
   responsive: true,
@@ -85,19 +85,25 @@ const LineChart: FC<LineProps> = ({ dataSet, labels }) => {
     setChartData(cData);
   }, [dataSet]);
 
-  
-
   return (
-    <div className="">
-      <Chart
-        type="line"
-        ref={chartRef}
-        data={chartData}
-        width={400}
-        height={200}
-        options={options}
-      />
-    </div>
+    <>
+    
+      <div className="mb-4">
+        <p className="text-2xl font-bold ">
+          How's the temperature <br /> this week?
+        </p>
+      </div>
+      <div>
+        <Chart
+          type="line"
+          ref={chartRef}
+          data={chartData}
+          width={400}
+          height={200}
+          options={options}
+        />
+      </div>
+    </>
   );
 };
 
