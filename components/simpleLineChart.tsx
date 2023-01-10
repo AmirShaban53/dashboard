@@ -4,14 +4,6 @@ import { Chart as ChartJS } from "chart.js";
 import { Chart } from "react-chartjs-2";
 import { useState } from "react";
 
-const createGradient = (ctx: CanvasRenderingContext2D, area: ChartArea) => {
-  const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
-  gradient.addColorStop(0.35, "rgba(58, 255, 255, 0)");
-  gradient.addColorStop(1, "rgba(58, 255, 255,1)");
-
-  return gradient;
-};
-
 const options = {
   plugins: {
     legend: {
@@ -25,7 +17,7 @@ const options = {
       ticks: {
         color: "white",
         callback: (value: number | string) => {
-          return `+${value}M`;
+          return `${value} C`;
         },
       },
       grid: {
@@ -34,8 +26,10 @@ const options = {
     },
     x: {
       ticks: {
+        color: "white",
         display: false,
       },
+
       grid: {
         display: false,
       },
@@ -43,18 +37,15 @@ const options = {
   },
 };
 
-type LineProps = { dataSet: { data: number[]; color: string }[] };
-const LineChart: FC<LineProps> = ({ dataSet }) => {
+type chartProps = { data: number[]; color: string; label: string };
+
+const SimpleLineChart: FC<chartProps> = ({ data, color, label }) => {
   const chartRef = useRef<ChartJS>(null);
   const [chartData, setChartData] = useState<ChartData<"line">>({
     datasets: [],
   });
 
-  const createGradient = (
-    ctx: CanvasRenderingContext2D,
-    area: ChartArea,
-    color: string
-  ) => {
+  const createGradient = (ctx: CanvasRenderingContext2D, area: ChartArea) => {
     const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
     gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
     gradient.addColorStop(1, color);
@@ -68,36 +59,37 @@ const LineChart: FC<LineProps> = ({ dataSet }) => {
 
     const cData = {
       labels: ["January", "February", "March", "April", "May"],
-      datasets: dataSet.map((data) => {
-        return {
-          backgroundColor: createGradient(
-            chart.ctx,
-            chart.chartArea,
-            data.color
-          ),
-          borderColor: data.color,
+      datasets: [
+        {
+          label: "yearly sales",
+          backgroundColor: createGradient(chart.ctx, chart.chartArea),
+          borderColor: color,
           fill: true,
-          tension: 0.1,
-          data: data.data,
-        };
-      }),
+          data: data,
+          tension: 0.3,
+        },
+      ],
     };
 
     setChartData(cData);
-  }, [dataSet]);
+  }, [data]);
 
   return (
-    <div className="w-2/3 d">
+    <div className="rounded-xl bg-zinc-800 p-2 mx-4">
+      <div>
+        <p className="capitalize font-bold">{label} (C)</p>
+      </div>
       <Chart
+        className=""
         type="line"
         ref={chartRef}
         data={chartData}
-        width={400}
-        height={200}
+        width={200}
+        height={100}
         options={options}
       />
     </div>
   );
 };
 
-export default LineChart;
+export default SimpleLineChart;

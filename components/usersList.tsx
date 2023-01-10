@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const UserList: FC = () => {
   return (
-    <div className="d">
+    <div className="">
       <div className="mb-4">
         <p className="uppercase font-bold">our team</p>
       </div>
