@@ -25,9 +25,7 @@ const User: FC<{ active?: boolean }> = ({ active }) => {
       <div className="mb-4 md:flex items-center  ">
         <div className="relative mx-auto md:mx-2 w-fit ">
           <Image
-            className={`rounded-full border-2 ${
-              active ? "border-green-200" : "border-green-200"
-            } p-1`}
+            className={`rounded-full border-2 border-fuchsia-300 p-1`}
             src="/images/emmly.jpg"
             width={50}
             height={50}

@@ -21,7 +21,7 @@ const Activity: FC<{activity: string, date: string}> = ({activity, date}) => {
     <div className="border-dashed border-l ml-4 pl-6 py-2 relative">
       <p>{activity}</p>
       <p className="italic text-zinc-400 text-xs">{date}</p>
-      <div className="rounded-full absolute bg-green-500 h-4 w-4 left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2"></div>
+      <div className="rounded-full absolute bg-gradient-to-tr from-blue-500 to-fuchsia-300 h-4 w-4 left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2"></div>
     </div>
   );
 };

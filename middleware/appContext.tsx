@@ -1,6 +1,12 @@
 import { ReactNode } from "react";
 import { FC } from "react";
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  FormEvent,
+} from "react";
 import axios from "axios";
 
 const Context = createContext<any>({});
@@ -23,7 +29,6 @@ type Location = {
 };
 
 export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-
   const [forecasts, setForecasts] = useState();
   const [locationDetails, setLocationDetails] = useState<Location>();
 
@@ -57,10 +62,21 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
   };
 
+  const handleActiveLocation = (
+    e: FormEvent<HTMLFormElement>,
+    input: string
+  ) => {
+    e.preventDefault();
+
+    setActiveLocation(input);
+  };
+
   useEffect(() => {
     getData();
-  }, []);
+  }, [activeLocation]);
+
   const contextValue = {
+    handleActiveLocation,
     forecasts,
     locationDetails,
   };

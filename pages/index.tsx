@@ -1,9 +1,10 @@
 import TempCharts from "../components/tempCharts";
+import RainCharts from "../components/rainCharts";
 
 export default function Home() {
   return (
     <div className=" ">
-      <TempCharts />
+      <RainCharts/>
     </div>
   );
 }

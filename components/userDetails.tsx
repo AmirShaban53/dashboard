@@ -6,7 +6,7 @@ const UserDetails: FC = () => {
     <div className=" rounded-b-lg py-12">
       <div className="flex justify-center">
         <Image
-          className="border-2 border-green-500 rounded-full p-1"
+          className="border-2 border-fuchsia-500 rounded-full p-1"
           src={"/images/emmly.jpg"}
           alt={"user only"}
           width={120}

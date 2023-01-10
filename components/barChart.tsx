@@ -51,7 +51,7 @@ const BarChart: FC<BarProps> = ({ data, labels }) => {
     <>
       <div className="mb-4">
         <p className="text-2xl font-bold ">
-          How's the temperature <br /> this week?
+          How's the rain <br /> this week?
         </p>
       </div>
       <div>
