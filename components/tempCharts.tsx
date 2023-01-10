@@ -102,14 +102,29 @@ const TempCard: FC<{ currentData: any }> = ({ currentData }) => {
   const { locationDetails } = useAppContext();
 
   return (
-    <div className=" bg-cyan-500 h-full rounded-xl p-4">
+    <div
+      className={` bg-gradient-to-t ${
+        currentData.will_it_rain ? "from-blue-500" : "from-amber-600"
+      }   h-full rounded-xl p-4`}
+    >
       <p className="italic">today in</p>
-      <p className="font-bold text-2xl uppercase">{locationDetails?.location}</p>
+      <p className="font-bold text-2xl uppercase">
+        {locationDetails?.location}
+      </p>
       <div className="relative h-32">
-        <Image src={`https:${currentData.icon_url}`} alt="clouds" fill style={{objectFit:"contain"}}/>
+        <Image
+          src={`https:${currentData.icon_url}`}
+          alt="clouds"
+          fill
+          style={{ objectFit: "contain" }}
+        />
       </div>
-      <p className="text-center font-bold text-4xl mb-4">{currentData.avg_temp_c} <sup>0</sup>C </p>
-      <p className="italic text-sm text-center border-t pt-4">{currentData.condition}</p>
+      <p className="text-center font-bold text-4xl mb-4">
+        {currentData.avg_temp_c} <sup>0</sup>C{" "}
+      </p>
+      <p className="italic text-sm text-center border-t pt-4">
+        {currentData.condition}
+      </p>
     </div>
   );
 };
