@@ -6,7 +6,7 @@ const NavMenu: FC = () => {
   const router = useRouter();
   return (
     <div>
-      <ul className="">
+      <ul className="transition-all duration-300">
         {navData.map((nav) => {
           const isActive = router.asPath === nav.href;
 
@@ -27,7 +27,7 @@ const NavItem: FC<{ href: string; label: string; active?: boolean }> = ({
   return (
     <Link href={href}>
       <div
-        className={`p-2 mb-2 capitalize hover:bg-gradient-to-r from-blue-500 to-fuchsia-300 ${
+        className={`p-2 mb-2 transition-all duration-300 capitalize hover:bg-gradient-to-r from-blue-500 to-fuchsia-300 ${
           active ? "bg-gradient-to-r" : ""
         }`}
       >
@@ -40,8 +40,9 @@ const NavItem: FC<{ href: string; label: string; active?: boolean }> = ({
 export default NavMenu;
 
 const navData = [
-    { href: "/", label: "rain" },
-    { href: "/temperature", label: "temperature" },
+  { href: "/", label: "rain" },
+  { href: "/temperature", label: "temperature" },
   { href: "#", label: "humidity" },
   { href: "/users", label: "meteorologists" },
+  { href: "#", label: "settings" },
 ];

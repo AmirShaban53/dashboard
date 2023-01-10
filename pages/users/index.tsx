@@ -1,9 +1,9 @@
-import TempCharts from "../../components/tempCharts";
+import UsersTable from "../../components/usersTable";
 
 export default function Home() {
   return (
     <div className=" ">
-      <TempCharts/>
+      <UsersTable/>
     </div>
   );
 }

@@ -1,17 +1,18 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 
 const UserList: FC = () => {
+  const [userData, setUserData] = useState(users);
+
   return (
     <div className="rounded-xl bg-zinc-800 p-2 mb-4">
       <div className="mb-4">
         <p className="uppercase font-bold">our team</p>
       </div>
       <div className="flex md:block">
-        <User active={true} />
-        <User active={true} />
-        <User active={false} />
-        <User active={true} />
+        {userData.map(user=> {
+          return <User {...user}/>
+        })}
       </div>
     </div>
   );
@@ -19,17 +20,18 @@ const UserList: FC = () => {
 
 export default UserList;
 
-const User: FC<{ active?: boolean }> = ({ active }) => {
+const User: FC<{name: string; src: string; active: boolean }> = ({name, src, active }) => {
   return (
     <div>
       <div className="mb-4 md:flex items-center  ">
         <div className="relative mx-auto md:mx-2 w-fit ">
           <Image
             className={`rounded-full border-2 border-fuchsia-300 p-1`}
-            src="/images/emmly.jpg"
+            src={src}
             width={50}
             height={50}
             alt="this and that"
+            style={{objectFit: "cover"}}
           />
           <div
             className={`h-3 w-3 ${
@@ -38,8 +40,8 @@ const User: FC<{ active?: boolean }> = ({ active }) => {
           ></div>
         </div>
         <div className="text-center md:text-left">
-          <p className="hidden md:block text-xs sm:text-sm font-bold italic">
-            Melissa Pennyworth
+          <p className="hidden md:block text-xs sm:text-sm font-bold italic capitalize">
+            {name}
           </p>
           <p className="italic text-gray-500 text-sm">
             {active ? "online" : "offline"}
@@ -49,3 +51,27 @@ const User: FC<{ active?: boolean }> = ({ active }) => {
     </div>
   );
 };
+
+
+const users = [
+  {
+    src: "/images/emmly.jpg",
+    name: "melissa Pennyworth",
+    active: true,
+  },
+  {
+    src: "/images/user01.jpg",
+    name: "Marie Gwenvia",
+    active: false,
+  },
+  {
+    src: "/images/user02.jpg",
+    name: "Tonny Blair",
+    active: false,
+  },
+  {
+    src: "/images/user03.jpg",
+    name: "amir shaban",
+    active: true,
+  },
+];
