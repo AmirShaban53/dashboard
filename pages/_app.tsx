@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <div className="grow">
             <HeaderBar />
             <div className="md:flex h-full md:flex-row-reverse overflow-hidden ">
-              <div className=" basis-1/4">
+              <div className=" basis-1/4 p-4 border-l">
                 <UserList />
               </div>
               <div className="grow h-full overflow-y-scroll no-scroll">

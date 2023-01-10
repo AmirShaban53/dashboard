@@ -16,6 +16,7 @@ const options = {
   plugins: {
     legend: {
       display: false,
+      labels: {color: "white"}
     },
   },
   responsive: true,
@@ -25,26 +26,23 @@ const options = {
       ticks: {
         color: "white",
         callback: (value: number | string) => {
-          return `+${value}M`;
+          return `${value} C`;
         },
       },
-      grid: {
-        display: false,
-      },
+      grid: {},
     },
     x: {
-      ticks: {
-        display: false,
-      },
-      grid: {
-        display: false,
-      },
+      ticks: {},
+      grid: {},
     },
   },
 };
 
-type LineProps = { dataSet: { data: number[]; color: string }[] };
-const LineChart: FC<LineProps> = ({ dataSet }) => {
+type LineProps = {
+  dataSet: { data: number[]; color: string; label: string }[];
+  labels: string[];
+};
+const LineChart: FC<LineProps> = ({ dataSet, labels }) => {
   const chartRef = useRef<ChartJS>(null);
   const [chartData, setChartData] = useState<ChartData<"line">>({
     datasets: [],
@@ -67,7 +65,7 @@ const LineChart: FC<LineProps> = ({ dataSet }) => {
     if (!chart) return;
 
     const cData = {
-      labels: ["January", "February", "March", "April", "May"],
+      labels: labels,
       datasets: dataSet.map((data) => {
         return {
           backgroundColor: createGradient(
@@ -77,8 +75,9 @@ const LineChart: FC<LineProps> = ({ dataSet }) => {
           ),
           borderColor: data.color,
           fill: true,
-          tension: 0.1,
+          tension: 0.5,
           data: data.data,
+          label: data.label,
         };
       }),
     };
@@ -86,8 +85,10 @@ const LineChart: FC<LineProps> = ({ dataSet }) => {
     setChartData(cData);
   }, [dataSet]);
 
+  
+
   return (
-    <div className="w-2/3 d">
+    <div className="">
       <Chart
         type="line"
         ref={chartRef}

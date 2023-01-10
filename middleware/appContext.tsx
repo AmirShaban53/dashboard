@@ -30,7 +30,7 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [forecasts, setForecasts] = useState();
   const [locationDetails, setLocationDetails] = useState<Location>();
 
-  const [activeLocation, setActiveLocation] = useState("kampala");
+  const [activeLocation, setActiveLocation] = useState("london");
 
   const getData = async () => {
     try {

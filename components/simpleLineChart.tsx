@@ -37,9 +37,14 @@ const options = {
   },
 };
 
-type chartProps = { data: number[]; color: string; label: string };
+type chartProps = {
+  data: number[];
+  color: string;
+  label: string;
+  labels: string[];
+};
 
-const SimpleLineChart: FC<chartProps> = ({ data, color, label }) => {
+const SimpleLineChart: FC<chartProps> = ({ data, color, label, labels }) => {
   const chartRef = useRef<ChartJS>(null);
   const [chartData, setChartData] = useState<ChartData<"line">>({
     datasets: [],
@@ -58,10 +63,10 @@ const SimpleLineChart: FC<chartProps> = ({ data, color, label }) => {
     if (!chart) return;
 
     const cData = {
-      labels: ["January", "February", "March", "April", "May"],
+      labels: labels,
       datasets: [
         {
-          label: "yearly sales",
+          label: label,
           backgroundColor: createGradient(chart.ctx, chart.chartArea),
           borderColor: color,
           fill: true,
@@ -75,7 +80,7 @@ const SimpleLineChart: FC<chartProps> = ({ data, color, label }) => {
   }, [data]);
 
   return (
-    <div className="rounded-xl bg-zinc-800 p-2 mx-4">
+    <div className="rounded-xl bg-zinc-800 p-2 mx-4 flex-grow">
       <div>
         <p className="capitalize font-bold">{label} (C)</p>
       </div>

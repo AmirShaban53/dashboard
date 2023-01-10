@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const UserList: FC = () => {
   return (
-    <div className="">
+    <div className="rounded-xl bg-zinc-800 p-2">
       <div className="mb-4">
         <p className="uppercase font-bold">our team</p>
       </div>
@@ -22,8 +22,8 @@ export default UserList;
 const User: FC<{ active?: boolean }> = ({ active }) => {
   return (
     <div>
-      <div className=" m-2 ">
-        <div className="relative mx-auto w-fit">
+      <div className="mb-4 md:flex items-center  ">
+        <div className="relative mx-auto md:mx-2 w-fit ">
           <Image
             className={`rounded-full border-2 ${
               active ? "border-green-200" : "border-green-200"
@@ -39,11 +39,13 @@ const User: FC<{ active?: boolean }> = ({ active }) => {
             } absolute right-1 bottom-0 rounded-full`}
           ></div>
         </div>
-        <div className="text-center">
-          <p className=" text-xs font-bold italic">Lorem, ipsum.</p>
-          {/* <p className="italic text-gray-500 text-sm">
+        <div className="text-center md:text-left">
+          <p className="hidden md:block text-xs sm:text-sm font-bold italic">
+            Melissa Pennyworth
+          </p>
+          <p className="italic text-gray-500 text-sm">
             {active ? "online" : "offline"}
-          </p> */}
+          </p>
         </div>
       </div>
     </div>

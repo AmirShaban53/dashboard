@@ -9,7 +9,7 @@ export default function Home() {
   //   getData();
   // }, []);
   return (
-    <div className="d pb-6">
+    <div className=" ">
       <LocationDetails />
       <TempCharts />
     </div>
