@@ -14,7 +14,7 @@ const UsersTable: FC = () => {
           </p>
         </div>
         <div>
-          <button className="capitalize bg-gradient-to-r from-blue-500 to-fuchsia-300 px-4 py-2 rounded-full">
+          <button className="hidden md:block capitalize bg-gradient-to-r from-blue-500 to-fuchsia-300 px-4 py-2 rounded-full">
             add user
           </button>
         </div>
@@ -23,7 +23,7 @@ const UsersTable: FC = () => {
         <thead>
           <tr className="border-b border-zinc-500">
             <th className="py-4">user</th>
-            <th className="py-4">location</th>
+            <th className="py-4 hidden md:block">location</th>
             <th className="py-4">active</th>
           </tr>
         </thead>
@@ -47,8 +47,8 @@ type UserProps = {
 const UserRow: FC<UserProps> = ({ src, name, email, location, active }) => {
   return (
     <tr className="hover:bg-zinc-600 transition-all duration-300">
-      <td className=" py-4 flex items-center">
-        <div className="relative h-16 w-16 mx-auto md:mx-2  ">
+      <td className=" py-2 md:py-4 flex items-center">
+        <div className="relative h-16 w-16 mr-2 md:mx-2  ">
           <Image
             className={`rounded-full border-2 border-fuchsia-300 p-1`}
             src={src}
@@ -59,10 +59,10 @@ const UserRow: FC<UserProps> = ({ src, name, email, location, active }) => {
         </div>
         <div className="">
           <p className="capitalize">{name}</p>
-          <p className="italic text-sm text-gray-400">{email}</p>
+          <p className="italic hidden text-sm text-gray-400">{email}</p>
         </div>
       </td>
-      <td>
+      <td className="hidden">
         <p className="capitalize">{location}</p>
       </td>
       <td>

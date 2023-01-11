@@ -31,6 +31,7 @@ type Location = {
 export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [forecasts, setForecasts] = useState();
   const [locationDetails, setLocationDetails] = useState<Location>();
+  const [mobileNavActive, setMobileNavActive] = useState(false);
 
   const [activeLocation, setActiveLocation] = useState("london");
 
@@ -71,13 +72,21 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setActiveLocation(input);
   };
 
+  const handleMobileNav = () => {
+    setMobileNavActive((prev) => {
+      return !prev;
+    });
+  };
+
   useEffect(() => {
     getData();
   }, [activeLocation]);
 
   const contextValue = {
     handleActiveLocation,
+    handleMobileNav,
     forecasts,
+    mobileNavActive,
     locationDetails,
   };
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

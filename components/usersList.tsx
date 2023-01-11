@@ -9,7 +9,7 @@ const UserList: FC = () => {
       <div className="mb-4">
         <p className="uppercase font-bold">our team</p>
       </div>
-      <div className="flex md:block">
+      <div className="flex justify-around md:block">
         {userData.map(user=> {
           return <User {...user}/>
         })}
@@ -22,14 +22,13 @@ export default UserList;
 
 const User: FC<{name: string; src: string; active: boolean }> = ({name, src, active }) => {
   return (
-    <div>
-      <div className="mb-4 md:flex items-center  ">
-        <div className="relative mx-auto md:mx-2 w-fit ">
+    <div className="">
+      <div className="mb-4 md:flex items-center">
+        <div className="relative mx-auto md:mx-2 h-12 w-12">
           <Image
             className={`rounded-full border-2 border-fuchsia-300 p-1`}
             src={src}
-            width={50}
-            height={50}
+            fill
             alt="this and that"
             style={{objectFit: "cover"}}
           />

@@ -59,7 +59,7 @@ const TempCharts: FC = () => {
 
   return (
     <div className="">
-      <div className="flex justify-between mb-10">
+      <div className="flex justify-between mb-10 w-screen md:w-auto overflow-x-scroll no-scroll">
         <SimpleLineChart
           data={minTemp}
           color="cyan"
@@ -79,12 +79,11 @@ const TempCharts: FC = () => {
           labels={labels}
         />
       </div>
-      <div className="flex p-4">
-        <div className="bg-zinc-800 rounded-xl mr-8 p-4 basis-4/6">
-  
+      <div className="md:flex p-4 w-screen md:w-auto">
+        <div className="bg-zinc-800 rounded-xl mb-4 md:mr-8 p-4 basis-4/6">
           <LineChart dataSet={dataSets} labels={labels} />
         </div>
-        <div className="flex-grow">
+        <div className="flex-grow mb-4">
           <TempCard currentData={currentForecast} />
         </div>
       </div>

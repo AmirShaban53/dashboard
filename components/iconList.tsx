@@ -10,7 +10,7 @@ type IconProps = {
 
 const IconList: FC<IconProps> = ({ icons, labels, percentages }) => {
   return (
-    <div className="flex p-4 justify-between">
+    <div className="flex p-2 justify-between w-screen sm:w-auto overflow-x-scroll no-scroll">
       {icons.map((icon, index) => {
         if (labels?.length && percentages?.length)
           return (

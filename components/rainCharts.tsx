@@ -48,15 +48,14 @@ const RainCharts: FC = () => {
   return (
     <div>
       <IconList icons={icons} labels={labels} percentages={rainPercentage} />
-      <div className="flex p-4">
-        <div className="bg-zinc-800 rounded-xl mr-8 p-4 basis-4/6">
+      <div className="md:flex p-4 w-screen md:w-auto">
+        <div className="bg-zinc-800 rounded-xl mb-4 md:mr-8  p-4 md:basis-4/6">
           <BarChart data={rainPercentage} labels={labels} />
         </div>
-        <div className="flex-grow">
+        <div className="md:flex-grow mb-4">
           <RainCard currentData={currentForecast} />
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

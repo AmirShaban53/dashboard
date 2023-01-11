@@ -14,20 +14,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ContextProvider>
-        <div className="flex h-screen bg-zinc-900 text-slate-50 overflow-y-hidden">
-          <div className="basis-1/5 bg-zinc-800">
-            <SideBar />
-          </div>
+        <div className="flex h-screen bg-zinc-900 text-slate-50 overflow-y-hidden relative">
+          <SideBar />
           <div className="grow ">
             <HeaderBar />
             <div className="md:flex  md:flex-row-reverse">
-              <div className=" basis-1/4 p-4 border-l border-zinc-800">
+              <div className=" basis-1/4 p-4 border-l border-zinc-800 ">
                 <UserList />
                 <ActivityLog />
               </div>
-              <div className="grow h-screen overflow-y-scroll no-scroll pb-20">
+              <div className="grow h-screen overflow-y-scroll no-scroll pb-64 md:pb-20">
                 <LocationDetails />
-
                 <Component {...pageProps} />
               </div>
             </div>

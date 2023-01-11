@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const ActivityLog: FC = () => {
   return (
-    <div className="rounded-xl bg-zinc-800 p-2">
+    <div className="rounded-xl bg-zinc-800 p-2 hidden md:block">
       <div className="mb-4">
         <p className="uppercase font-bold ">Recent Activities</p>
       </div>
