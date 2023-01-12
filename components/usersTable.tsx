@@ -28,8 +28,8 @@ const UsersTable: FC = () => {
           </tr>
         </thead>
         <tbody>
-          {userData.map((user) => {
-            return <UserRow {...user} />;
+          {userData.map((user, index) => {
+            return <UserRow key={index} {...user} />;
           })}
         </tbody>
       </table>

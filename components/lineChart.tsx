@@ -90,7 +90,7 @@ const LineChart: FC<LineProps> = ({ dataSet, labels }) => {
     
       <div className="mb-4">
         <p className="text-2xl font-bold ">
-          How's the temperature <br /> this week?
+         {` How's the temperature`} <br /> {`this week?`}
         </p>
       </div>
       <div>

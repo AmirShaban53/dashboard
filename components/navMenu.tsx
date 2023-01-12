@@ -9,11 +9,11 @@ const NavMenu: FC = () => {
   return (
     <div>
       <ul className="transition-all duration-300">
-        {navData.map((nav) => {
+        {navData.map((nav, index) => {
           const isActive = router.asPath === nav.href;
 
           return (
-            <NavItem href={nav.href} label={nav.label} active={isActive} />
+            <NavItem key={index} href={nav.href} label={nav.label} active={isActive} />
           );
         })}
       </ul>

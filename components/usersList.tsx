@@ -10,8 +10,8 @@ const UserList: FC = () => {
         <p className="uppercase font-bold">our team</p>
       </div>
       <div className="flex justify-around md:block">
-        {userData.map(user=> {
-          return <User {...user}/>
+        {userData.map((user, index)=> {
+          return <User key={index} {...user}/>
         })}
       </div>
     </div>
