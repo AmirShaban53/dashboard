@@ -1,22 +1,21 @@
-import TempCharts from "../components/tempCharts";
+import Head from "next/head";
 import RainCharts from "../components/rainCharts";
 
 export default function Home() {
   return (
+    <>
+    <Head>
+        <title>QW | rain</title>
+        <meta
+          name="description"
+          content="quick-weather is an webapp to instantly view the weather of any location in the world within seconds without any gps required."
+        />
+      </Head>
     <div className=" ">
       <RainCharts/>
     </div>
+    </>
   );
 }
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-//   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-//   const headers = { Authorization: `Bearer ${API_KEY}` };
-//   const data = {}
-//   const cartItems = await axios.get(`https://api.m3o.com/v1/weather/Forecast`, {
-//     headers: headers,
-//   });
-//   return { props: { cartItems: cartItems.data } };
-// };
