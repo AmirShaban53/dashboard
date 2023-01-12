@@ -33,6 +33,7 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [locationDetails, setLocationDetails] = useState<Location>();
   const [mobileNavActive, setMobileNavActive] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [activeLocation, setActiveLocation] = useState("london");
 
   const getData = async () => {
@@ -42,6 +43,7 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       const headers = { Authorization: `Bearer ${API_KEY}` };
       const data = { location: activeLocation, days: 5 };
+      setIsLoading(true);
       const weatherData = await axios.post(`${BASE_URL}/Forecast`, data, {
         headers: headers,
       });
@@ -57,9 +59,11 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
           local_time,
         });
         setForecasts(weatherData.data.forecast);
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -86,6 +90,7 @@ export const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     handleActiveLocation,
     handleMobileNav,
     forecasts,
+    isLoading,
     mobileNavActive,
     locationDetails,
   };
