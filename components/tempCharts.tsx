@@ -3,6 +3,7 @@ import SimpleLineChart from "./simpleLineChart";
 import LineChart from "./lineChart";
 import { useAppContext } from "../middleware/appContext";
 import TempCard from "./tempCard";
+import DoughnutChart from "./doughnut";
 
 const TempCharts: FC = () => {
   const { forecasts } = useAppContext();
@@ -87,6 +88,7 @@ const TempCharts: FC = () => {
           <TempCard currentData={currentForecast} />
         </div>
       </div>
+      {/* <DoughnutChart/> */}
     </div>
   );
 };

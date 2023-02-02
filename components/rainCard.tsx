@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { useAppContext } from "../middleware/appContext";
+import DoughnutChart from "./doughnut";
 
 const RainCard: FC<{ currentData: any }> = ({ currentData }) => {
   const { locationDetails } = useAppContext();
@@ -13,10 +14,11 @@ const RainCard: FC<{ currentData: any }> = ({ currentData }) => {
       <p className="font-bold text-2xl uppercase">
         {locationDetails?.location}
       </p>
-      <p className="text-center font-bold text-6xl my-8 py-8 bg-gradient-to-tr from-blue-500 to-fuchsia-300 rounded-full">
+      {/* <p className="text-center font-bold text-6xl my-8 py-8 bg-gradient-to-tr from-blue-500 to-fuchsia-300 rounded-full">
         {currentData.chance_of_rain}%
-      </p>
+      </p> */}
       <p className="italic text-sm text-center pt-4">
+        <DoughnutChart percentage={currentData.chance_of_rain}/>
       chance of rain
       </p>
     </div>

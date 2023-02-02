@@ -8,6 +8,7 @@ const RainCharts: FC = () => {
   const { forecasts } = useAppContext();
 
   const [rainPercentage, setRainPercentage] = useState<number[]>([]);
+  const [temperatures, setTemperatures] = useState<number[]>([]);
   const [labels, setLabels] = useState<string[]>([]);
   const [icons, setIcons] = useState<string[]>([]);
 
@@ -19,6 +20,9 @@ const RainCharts: FC = () => {
     forecasts?.forEach((forecast: any) => {
       setRainPercentage((prev) => {
         return [...prev, forecast.chance_of_rain];
+      });
+      setTemperatures((prev) => {
+        return [...prev, forecast.avg_temp_c];
       });
       setIcons((prev) => {
         return [...prev, forecast.icon_url];
@@ -47,7 +51,7 @@ const RainCharts: FC = () => {
 
   return (
     <div>
-      <IconList icons={icons} labels={labels} percentages={rainPercentage} />
+      <IconList icons={icons} labels={labels} percentages={temperatures} />
       <div className="md:flex p-4 w-screen md:w-auto">
         <div className="bg-zinc-800 rounded-xl mb-4 md:mr-8  p-4 md:basis-4/6">
           <BarChart data={rainPercentage} labels={labels} />

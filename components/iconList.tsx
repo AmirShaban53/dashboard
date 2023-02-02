@@ -41,7 +41,7 @@ const IconItem: FC<{ icon?: string; label?: string; percentage?: number }> = ({
         />
       </div>
       <div className="text-center">
-        <p className="text-2xl">{percentage}% </p>
+        <p className="text-lg md:text-2xl">{percentage} <sup>o</sup>C </p>
         <p className="text-sm italic text-zinc-200">{label} </p>
       </div>
     </div>
